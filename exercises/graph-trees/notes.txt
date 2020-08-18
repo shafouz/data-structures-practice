@@ -1,0 +1,19 @@
+height = number of edges from root to deepest leaf
+leaf = no children
+
+right node always higher value than left node
+
+number of leaf nodes
+=
+number of nodes with 2 children + 1
+
+maximum number of nodes at level L is
+=
+2^(L-1)
+
+maximum number of nodes in a tree of height H is
+=
+2^(H+1)-1
+
+links
+https://www.youtube.com/watch?v=oSWTXtMglKE
