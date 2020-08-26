@@ -7,13 +7,12 @@ class Node
   attr_accessor :succ, :data
   attr_reader :succ, :data
 
-  def initialize(data="", succ="")
+  def initialize(data=nil, succ=nil)
     @data, @succ = data, succ
   end
-
+  
   # Inserts a node in the first position
   def self.insert_node(node, data)
-    raise "Data can't be blank" if data.blank?
     temp = [node.data, node.succ]
     node.data = data
     node.succ = Node.new(temp[0], temp[1])
@@ -21,7 +20,6 @@ class Node
 
   # Inserts a node in the last position
   def self.append_node(node, data)
-    raise "Data can't be blank" if data.blank?
     if node.succ.blank?
       node.succ = Node.new(data)
       return
@@ -31,7 +29,6 @@ class Node
 
   # Search for node data, and return true or false
   def self.find_node(node, data)
-    raise "Data can't be blank" if data.blank?
     return true if node.data == data
     return false if node.succ.blank?
     find_node(node.succ, data)
@@ -39,7 +36,6 @@ class Node
   
   # Delete a node
   def self.delete_node(node, data)
-    raise "Data can't be blank" if data.blank?
     if node.succ.data == data
       node.succ = node.succ.succ
       return
@@ -63,5 +59,15 @@ class Node
     array << node.data
     return array if node.succ.blank?
     return_data(node.succ, array)
+  end
+
+  def self.ammend_nodes(node1, node2)
+    while true
+      if node1.data != nil && node1.succ == nil
+        node1.succ = node2
+        return
+      end
+      node1 = node1.succ
+    end
   end
 end

@@ -58,4 +58,16 @@ class NodeTest < Minitest::Test
     Node.insert_node(root, 1)
     assert_equal 5, Node.length(root)
   end
+
+  def test_ammend_nodes
+    root1 = Node.new(2)
+    Node.insert_node(root1, 5)
+    root2 = Node.new(3)
+    Node.insert_node(root2, 10)
+    Node.ammend_nodes(root1, root2)
+    assert_equal 5, root1.data
+    assert_equal 2, root1.succ.data
+    assert_equal 10, root1.succ.succ.data
+    assert_equal 3, root1.succ.succ.succ.data
+  end
 end
